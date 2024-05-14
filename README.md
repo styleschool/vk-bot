@@ -13,8 +13,18 @@ https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=h
 
 And put the token into `token` file near `index.js` file.
 
+```bash
+echo "PUT_TOKEN_HERE" > token
+```
+
+## Prepare
+
+```bash
+npm ci
+```
+
 ## Run
 
-```
-node index.js
+```bash
+node index.js 2>&1 | tee log.txt
 ```
