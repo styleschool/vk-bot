@@ -5,17 +5,17 @@ const { handleOutgoingMessage, enqueueMessage } = require('./outgoing-messages')
 const peers = {}; // TODO: keep state about what triggers then last triggered for each peer
 
 const triggers = [
-  require('./triggers/acquaintance').trigger,
-  require('./triggers/attachments').trigger,
-  require('./triggers/goal').trigger,
-  require('./triggers/gratitude').trigger,
-  require('./triggers/greeting').trigger,
-  require('./triggers/undefined-question').trigger,
-  require('./triggers/well-being').trigger,
-  require('./triggers/who-multiple').trigger,
-  require('./triggers/who-singular').trigger,
-  require('./triggers/have-we-talked-before').trigger,
-  require('./triggers/engage-with-acquaintance').trigger
+  // require('./triggers/acquaintance').trigger,
+  // require('./triggers/attachments').trigger,
+  // require('./triggers/goal').trigger,
+  // require('./triggers/gratitude').trigger,
+  // require('./triggers/greeting').trigger,
+  // require('./triggers/undefined-question').trigger,
+  // require('./triggers/well-being').trigger,
+  // require('./triggers/who-multiple').trigger,
+  // require('./triggers/who-singular').trigger,
+  // require('./triggers/have-we-talked-before').trigger,
+  // require('./triggers/engage-with-acquaintance').trigger
 ];
 
 const token = require('fs').readFileSync('token', 'utf-8').trim();
@@ -98,33 +98,33 @@ const deleteDeactivatedFriendsInterval = setInterval(async () => {
   await executeTrigger(deleteDeactivatedFriendsTrigger, { vk });
 }, 30 * minute);
 
-const { trigger: greetFriends } = require('./triggers/greet-friends');
-const greetFriendsInterval = setInterval(async () => {
-  await executeTrigger(greetFriends, { vk, options: { maxGreetings: 20 } });
-}, 40 * minute);
+// const { trigger: greetFriends } = require('./triggers/greet-friends');
+// const greetFriendsInterval = setInterval(async () => {
+//   await executeTrigger(greetFriends, { vk, options: { maxGreetings: 20 } });
+// }, 40 * minute);
 
-const { trigger: reactToCancelledFriendships } = require('./triggers/react-to-cancelled-friendships');
-const reactToCancelledFriendshipsInterval = setInterval(async () => {
-  await executeTrigger(reactToCancelledFriendships, { vk, options: { maxRequests: 20 }, states: peers });
-}, 20 * minute);
+// const { trigger: reactToCancelledFriendships } = require('./triggers/react-to-cancelled-friendships');
+// const reactToCancelledFriendshipsInterval = setInterval(async () => {
+//   await executeTrigger(reactToCancelledFriendships, { vk, options: { maxRequests: 20 }, states: peers });
+// }, 20 * minute);
 
-// const { trigger: deleteOutgoingFriendRequestsTrigger } = require('./triggers/delete-outgoing-requests');
-// const deleteOutgoingFriendRequestsInterval = setInterval(async () => {
-//   await executeTrigger(deleteOutgoingFriendRequestsTrigger, { vk, options: { maxRequests: 20 } });
-// }, 8 * minute);
+const { trigger: deleteOutgoingFriendRequestsTrigger } = require('./triggers/delete-outgoing-requests');
+const deleteOutgoingFriendRequestsInterval = setInterval(async () => {
+  await executeTrigger(deleteOutgoingFriendRequestsTrigger, { vk, options: { maxRequests: 20 } });
+}, 8 * minute);
 
 const { trigger: sendInvitationPostsForFriendsTrigger } = require('./triggers/send-invitation-posts-for-friends');
 const sendInvitationPostsForFriendsInterval = setInterval(async () => {
   await executeTrigger(sendInvitationPostsForFriendsTrigger, { vk });
 }, 30 * minute);
 
-let lastBirthday;
-const { trigger: sendBirthDayCongratulationsTrigger } = require('./triggers/send-birthday-congratulations');
-const sendBirthDayCongratulationsInterval = setInterval(async () => {
-  const now = new Date();
-  const currentDay = now.getDate();
-  if (currentDay != lastBirthday) {
-    lastBirthday = currentDay;
-    await executeTrigger(sendBirthDayCongratulationsTrigger, { vk });
-  }
-}, 23 * 60 * minute);
+// let lastBirthday;
+// const { trigger: sendBirthDayCongratulationsTrigger } = require('./triggers/send-birthday-congratulations');
+// const sendBirthDayCongratulationsInterval = setInterval(async () => {
+//   const now = new Date();
+//   const currentDay = now.getDate();
+//   if (currentDay != lastBirthday) {
+//     lastBirthday = currentDay;
+//     await executeTrigger(sendBirthDayCongratulationsTrigger, { vk });
+//   }
+// }, 23 * 60 * minute);
