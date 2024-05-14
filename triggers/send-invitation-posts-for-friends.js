@@ -17,21 +17,23 @@ const communitiesIds = [
   214787806,
 ];
 
-const postMessage = `Я программист.
+const postMessage = `Я руководитель Высшей школы стилистики дизайна и технологий.
+
+Собираю сообщество специалистов индустрии моды и дизайна.
+
 Принимаю все заявки в друзья.
-Пиши в личку, если нужно принять твою заявку в друзья без очереди.
-Предлагай взаимное действие (например лайк, подписку и т.п.) в личку.
-Сделаю предложенное тобой взаимное действие после твоей подписки на https://vk.com/oleviia.`;
 
-const neuronalMiracleAudio = 'audio-2001064727_125064727';
-const daysOfMiraclesAudio = 'audio-2001281499_119281499';
+Пишите в личные сообщения, если есть предложения по сотрудничеству или вопросы.`;
 
-const audioAttachments = [
-  neuronalMiracleAudio,
-  daysOfMiraclesAudio
-];
+// const neuronalMiracleAudio = 'audio-2001064727_125064727';
+// const daysOfMiraclesAudio = 'audio-2001281499_119281499';
 
-const postsSearchRequest = `Я программист.`;
+// const audioAttachments = [
+//   neuronalMiracleAudio,
+//   daysOfMiraclesAudio
+// ];
+
+const postsSearchRequest = `Я руководитель Высшей школы стилистики дизайна и технологий.`;
 
 async function sendInvitationPosts(context) {
   try {
