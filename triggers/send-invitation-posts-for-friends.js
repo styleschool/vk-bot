@@ -2,19 +2,19 @@ const { sleep, getRandomElement } = require('../utils');
 
 const communitiesIds = [
   195285978,
-  34985835,
-  24261502,
-  53294903,
-  // 8337923,
-  33764742,
-  94946045,
-  39130136,
-  194360448,
-  198580397,
-  180442247,
-  61413825,
-  47350356,
-  214787806,
+  // 34985835,
+  // 24261502,
+  // 53294903,
+  // // 8337923,
+  // 33764742,
+  // 94946045,
+  // 39130136,
+  // 194360448,
+  // 198580397,
+  // 180442247,
+  // 61413825,
+  // 47350356,
+  // 214787806,
 ];
 
 const postMessage = `Я руководитель Высшей школы стилистики дизайна и технологий.
@@ -65,7 +65,7 @@ async function sendInvitationPosts(context) {
         }
       }
 
-      const response = await context.vk.api.wall.post({ owner_id: ownerId, message: postMessage, attachments: getRandomElement(audioAttachments) })
+      const response = await context.vk.api.wall.post({ owner_id: ownerId, message: postMessage })
       console.log('Post is sent to', communityId, 'community.');
       await sleep(5000);
     }
